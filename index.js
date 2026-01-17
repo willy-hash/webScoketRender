@@ -11,7 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000", 
+      "https://web-socket-client-nine.vercel.app"
+    ],
     methods: ["GET", "POST"]
   }
 });
