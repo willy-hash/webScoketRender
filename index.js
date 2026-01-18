@@ -11,10 +11,13 @@ const PORT = process.env.PORT || 3000;
 
 const io = new Server(server, {
   cors: {
-    origin: [
+    origin: [ 
       "http://localhost:3000", 
-      "https://web-socket-client-nine.vercel.app"
+      "https://web-socket-client-nine.vercel.app", 
+      "capacitor://localhost", 
+      "http://localhost" 
     ],
+
     methods: ["GET", "POST"]
   }
 });
@@ -22,6 +25,7 @@ const io = new Server(server, {
 
 app.use(cors());
 app.use(express.json());
+
 
 app.get('/', (req, res) => {
     res.send('¡Express funcionando!');
