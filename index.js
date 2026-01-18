@@ -7,20 +7,34 @@ const server = createServer(app);
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://web-socket-client-nine.vercel.app",
+    "capacitor://localhost",
+    "http://localhost",
+    "https://localhost"
+  ],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
 
 
 const io = new Server(server, {
   cors: {
-    origin: [ 
-      "http://localhost:3000", 
-      "https://web-socket-client-nine.vercel.app", 
-      "capacitor://localhost", 
-      "http://localhost" 
+    origin: [
+      "http://localhost:3000",
+      "https://web-socket-client-nine.vercel.app",
+      "capacitor://localhost",
+      "http://localhost",
+      "https://localhost"
     ],
-
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
+
 
 
 app.use(cors());
